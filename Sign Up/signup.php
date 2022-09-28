@@ -6,7 +6,7 @@ if (isset($_POST['submit'])) {
   $password = md5($_POST["password_user"]);
   $no_user = $_POST['no_user'];
   mysqli_query($conn, "insert into user set nama_user= '$_POST[nama_user]',
-  email_user= '$_POST[email_user]', password_user = '$password'");
+  email_user= '$_POST[email_user]', password_user = '$password', nohp_user = '$_POST[nohp_user]'");
   echo "<script type='text/javascript'>alert('Register_Berhasil');
   window.location='../Login/login.php'; </script>";
 }
@@ -25,6 +25,11 @@ if (isset($_POST['submit'])) {
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
 
+  //picker
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../vendor/datepicker/css/bootstrap-datepicker.css" rel="stylesheet" type="text/css">
+
+
   <title>Sign Up</title>
 </head>
 
@@ -37,19 +42,25 @@ if (isset($_POST['submit'])) {
 
         <form method="post">
           <div class="mb-4 mt-4">
-            <label for="exampleInputEmail1" class="form-label">Nama</label>
-            <input name="nama_user" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Your Name">
+            <label for="exampleInputNama1" class="form-label">Nama</label>
+            <input name="nama_user" type="text" class="form-control" id="exampleInputNama1" placeholder="Your Name" required>
           </div>
           <div class="mb-4 mt-4">
             <label for="exampleInputEmail1" class="form-label">Email</label>
-            <input name="email_user" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Your Email">
+            <input name="email_user" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Your Email" required>
           </div>
           <div class="mb-4">
             <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input name="password_user" type="password" class="form-control" id="exampleInputPassword1" placeholder="Your Password">
+            <input name="password_user" type="password" class="form-control" id="exampleInputPassword1" placeholder="Your Password" required>
+          </div>
+          <div class="mb-4">
+            <label for="exampleInputNoHp1" class="form-label">Nomor HP</label>
+            <input name="nohp_user" type="text" class="form-control" id="exampleInputNoHp1" placeholder="Your Number Phone" onkeypress="return hanyaAngka(event)" required>
           </div>
 
-          <div class="d-grid mt-4">
+
+
+          <div class=" d-grid mt-4">
             <input class="btn btn-primary" type="submit" name="submit">
           </div>
 
@@ -64,6 +75,10 @@ if (isset($_POST['submit'])) {
 
   <!-- Option 1: Bootstrap Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+
+
+
 </body>
 
 </html>
